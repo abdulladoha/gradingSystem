@@ -2,55 +2,68 @@ using System;
 
 class Program
 {
-  static void Main(string[] args)
-  {
-    //initialise variables - graded assignments
-    int currentAssignments = 5;
-
-    int[] sofiaScores = new int[] {90, 86, 87, 98, 100};
-    int[] andyScores = new int[] {92, 84, 62, 67};
-    int[] emmaScores = new int[] {93, 80, 87, 49, 89};
-    int[] loganScores = new int[] {83, 94, 38, 48};
-    
-    //Student names
-    string[] studentNames = new string[] { "Sofia", "Andy", "Emma", "Logan"};
-    
-    int[] studentScores = new int[10];
-    
-    //Write the Report Header to the console
-    Console.WriteLine("Student\t\tGrade\n");
-    
-    foreach (string name in studentNames)
+    static void Main(string[] args)
     {
-      string currentStudent = name;
+        // Initialize variables - graded assignments
+        int currentAssignments = 5;
 
-      if (currentStudent == "Sofia")
-        studentScores = sofiaScores;
+        int[] sofiaScores = new int[] { 90, 86, 87, 98, 100 };
+        int[] andyScores = new int[] { 92, 84, 62, 67 };
+        int[] emmaScores = new int[] { 93, 80, 87, 49, 89 };
+        int[] loganScores = new int[] { 83, 94, 38, 48 };
 
-      else if (currentStudent == "Andy")
-        studentScores = andyScores;
-    
-      else if (currentStudent == "Emma")
-        studentScores = emmaScores;
-    
-      else if (currentStudent == "Logan")
-        studentScores = loganScores;
-    
-      // initialise/reset the sum of scored assignments
-      int sumAssignmentScores = 0;
+        // Student names
+        string[] studentNames = new string[] { "Sofia", "Andy", "Emma", "Logan" };
 
-      //initialise/reset the calculated average of exam + extra credit
-      decimal currentStudentGrade = 0;
-    
-      foreach (int score in studentScores)
-      {
-        //add the exam score to the sum
-        sumAssignmentScores += score;
-      }
-    
-    currentStudentGrade = (decimal)(sumAssignmentScores) / currentAssignments;
+        int[] studentScores = new int[10];
 
-    Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t?");
+        // Write the Report Header to the console
+        Console.WriteLine("Student\t\tGrade\n");
+
+        foreach (string name in studentNames)
+        {
+            string currentStudent = name;
+
+            if (currentStudent == "Sofia")
+                studentScores = sofiaScores;
+            else if (currentStudent == "Andy")
+                studentScores = andyScores;
+            else if (currentStudent == "Emma")
+                studentScores = emmaScores;
+            else if (currentStudent == "Logan")
+                studentScores = loganScores;
+
+            // Initialize/reset the sum of scored assignments
+            int sumAssignmentScores = 0;
+
+            // Initialize/reset the calculated average of exam + extra credit
+            decimal currentStudentGrade = 0;
+
+            foreach (int score in studentScores)
+            {
+                // Add the exam score to the sum
+                sumAssignmentScores += score;
+            }
+
+            currentStudentGrade = (decimal)(sumAssignmentScores) / currentAssignments;
+
+            // Calculate letter grade based on the currentStudentGrade
+            string letterGrade;
+
+            if (currentStudentGrade >= 90)
+                letterGrade = "A+";
+            else if (currentStudentGrade >= 80)
+                letterGrade = "A";
+            else if (currentStudentGrade >= 70)
+                letterGrade = "B";
+            else if (currentStudentGrade >= 60)
+                letterGrade = "C";
+            else if (currentStudentGrade >= 50)
+                letterGrade = "D";
+            else
+                letterGrade = "F";
+
+            Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t{letterGrade}");
+        }
     }
-  }
 }
