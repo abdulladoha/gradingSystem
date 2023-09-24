@@ -1,0 +1,56 @@
+using System;
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    //initialise variables - graded assignments
+    int currentAssignments = 5;
+
+    int[] sofiaScores = new int[] {90, 86, 87, 98, 100};
+    int[] andyScores = new int[] {92, 84, 62, 67};
+    int[] emmaScores = new int[] {93, 80, 87, 49, 89};
+    int[] loganScores = new int[] {83, 94, 38, 48};
+    
+    //Student names
+    string[] studentNames = new string[] { "Sofia", "Andy", "Emma", "Logan"};
+    
+    int[] studentScores = new int[10];
+    
+    //Write the Report Header to the console
+    Console.WriteLine("Student\t\tGrade\n");
+    
+    foreach (string name in studentNames)
+    {
+      string currentStudent = name;
+
+      if (currentStudent == "Sofia")
+        studentScores = sofiaScores;
+
+      else if (currentStudent == "Andy")
+        studentScores = andyScores;
+    
+      else if (currentStudent == "Emma")
+        studentScores = emmaScores;
+    
+      else if (currentStudent == "Logan")
+        studentScores = loganScores;
+    
+      // initialise/reset the sum of scored assignments
+      int sumAssignmentScores = 0;
+
+      //initialise/reset the calculated average of exam + extra credit
+      decimal currentStudentGrade = 0;
+    
+      foreach (int score in studentScores)
+      {
+        //add the exam score to the sum
+        sumAssignmentScores += score;
+      }
+    
+    currentStudentGrade = (decimal)(sumAssignmentScores) / currentAssignments;
+
+    Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t?");
+    }
+  }
+}
